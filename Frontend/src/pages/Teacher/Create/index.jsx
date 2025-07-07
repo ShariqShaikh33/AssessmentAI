@@ -6,24 +6,31 @@ import CustomInput from '../../../components/common/inputs/CustomInput';
 import { InputTypes } from '../../../components/common/inputs/CustomInput/utils';
 import { PlusIcon } from 'lucide-react';
 import { questionOptions } from '../../../utlis';
+import { useDispatch } from 'react-redux';
+import { addNewQuestionType } from '../../../store/features/template/templateSlice';
 
 function CreateTemplatePage() {
+    const dispatch = useDispatch();
     const { setHeading, setSubheading } = useHeading();
     setHeading("Create Template");
     setSubheading("Create a new template for your assessments");
-    const [questionType, setQuestionType] = useState("");
+    
+    const handleAddQuestionType = (value) =>{
+        console.log(`Add question type: ${value}`);
+        dispatch(addNewQuestionType(value));
+    }
+
     return (
         <div>
             <TemplatesBasicDetailsForm/>
             <CustomInput 
                 inputType={InputTypes.DROPDOWN} 
-                value={questionType}
-                onChange={setQuestionType}
+                value={""}
+                onChange={handleAddQuestionType}
                 showLabel={false}
                 options={questionOptions}
                 label={<div className='flex'>
-                    {/* <PlusIcon/> {questionOptions.find((q)=>q.id === questionType).label ?? "Add Question Types"} */}
-                    <PlusIcon/>Add Question Types
+                    <PlusIcon/> Add Question Types
                     </div>}/>
         </div>
     )
