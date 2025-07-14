@@ -7,7 +7,6 @@ export const templateInitialState = {
     subject: "",
     gradeLevel: "",
 
-    QuestionTypes:[
-        getEmptyQuestions()
+    questionTypes:[
     ]
 }

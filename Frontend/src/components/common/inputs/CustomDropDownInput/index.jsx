@@ -3,10 +3,10 @@ import CustomDropdown from '../../CustomDropdown'
 import { CheckIcon, ChevronDown } from 'lucide-react'
 
 function CustomDropdownInput({value,label,options,onChange}) {
-
+    console.log(label)
   return (
     <CustomDropdown trigger={<div className='flex justify-between border p-2 w-full rounded-sm'>
-            {label}
+            {options.find((option)=>option.id===value)?.label ?? value}
             <ChevronDown className='text-gray-500'/>
         </div>}>
         <div >

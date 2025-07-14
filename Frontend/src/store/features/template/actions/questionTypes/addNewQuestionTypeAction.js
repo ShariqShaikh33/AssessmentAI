@@ -2,7 +2,6 @@ import { getEmptyQuestions } from "../../utils";
 
 export const addNewQuestionTypeAction = (state, {payload}) => {
     const {questionType} = payload;
-    const newQuestion = getEmptyQuestions({type: questionType});
-    console.log({state});
+    const newQuestion = getEmptyQuestions(questionType);
     state.questionTypes.push(newQuestion);
 }

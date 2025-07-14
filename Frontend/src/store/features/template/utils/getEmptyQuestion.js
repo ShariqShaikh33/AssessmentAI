@@ -1,12 +1,12 @@
 import { DifficultyLevelTypes, QuestionTypes } from "../../../../types";
 
-export const getEmptyQuestions=(type = QuestionTypes.MULTIPLE_CHOICE) => {
+export const getEmptyQuestions=(type) => {
     return {
         type,
         data:{
             label: "",
-            questionCount: 0,
-            marksPerQuestion: 0,
+            questionCount: 5,
+            marksPerQuestion: 2,
             difficultyLevel: DifficultyLevelTypes.EASY,
             customPrompt: "",
             options: {
