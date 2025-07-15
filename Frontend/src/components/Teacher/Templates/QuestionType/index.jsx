@@ -59,7 +59,7 @@ function QuestionType({index}) {
                 placeholder="Give a custom prompt to futher drive the AI's outcome"
             />
 
-            <Options/>
+            <Options index={index}/>
         </form>
     </div>
   )

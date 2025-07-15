@@ -14,7 +14,6 @@ export const getEmptyQuestions=(type) => {
                 includeExplanations: false,
                 shuffleOptions: false,
                 enableNegativeMarking: false,
-                negativeScore: 0,
             }
         }
     }

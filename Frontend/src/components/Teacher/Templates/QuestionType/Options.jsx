@@ -1,26 +1,24 @@
 import React from 'react'
 import CustomInput from '../../../common/inputs/CustomInput'
 import { InputTypes } from '../../../common/inputs/CustomInput/utils'
+import { useDispatch, useSelector } from 'react-redux'
+import { templateSelector } from '../../../../store/features/template/selectors'
+import { updateQuestionTypeOptions } from '../../../../store/features/template/templateSlice'
+import { QuestionTypes } from '../../../../types'
+import { getQuestionTypeOptions } from './utils'
 
-function Options() {
-  const options=[
-    {
-      id: "includeHints",
-      label: "Include Hints"
-    },
-    {
-      id: "includeExplanation",
-      label: "Include Explanation"
-    },
-    {
-      id: "shuffleOptions",
-      label: "Shuffle Options"
-    },
-    {
-      id: "enableNegativeMarking",
-      label: "Enable Negative Marking"
-    },
-  ]
+function Options({index}) {
+  const dispatch = useDispatch()
+  const {questionTypes} = useSelector(templateSelector);
+  const questionType = questionTypes[index];
+  const options = getQuestionTypeOptions(questionType.type);
+  if(!questionType) return null
+
+  const handleChange=(key,value)=>{
+    dispatch(updateQuestionTypeOptions({index, key, value}))
+  }
+
+  
 
   return (
     <div>
@@ -33,8 +31,8 @@ function Options() {
           id={option.id}
           label={option.label}
           check = {"flex flex-row-reverse gap-2 justify-end items-start"}
-          value={false}
-          onChange={()=>{}}
+          value={questionType.data.options[option.id]}
+          onChange={(e)=>{handleChange(option.id,e)}}
           />
         })
       }

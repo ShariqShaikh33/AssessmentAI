@@ -5,7 +5,10 @@ import { lazy } from 'react';
 import { Suspense } from 'react';
 import Loading from './components/common/Loading';
 import TeacherTemplatePage from './pages/Teacher/Template';
-import CreateTemplatePage from './pages/Teacher/Create';
+import CreateTemplatePage from './pages/Teacher/Template/Create';
+import PageNotFound from './pages/404';
+import TeacherAssessmentPage from './pages/Teacher/Assesment';
+import CreateAssessmentPage from './pages/Teacher/Assesment/Create';
 
 const Home = lazy(()=> import("./pages/index"));
 const TeacherLayout = lazy(()=> import("./components/Teacher/Layout"));
@@ -21,7 +24,10 @@ function App() {
             <Route path='teacher/dashboard' element={<TeacherDashboard/>}></Route>
             <Route path='teacher/template' element={<TeacherTemplatePage/>}></Route>
             <Route path="teacher/template/create" element={<CreateTemplatePage/>}></Route>
+            <Route path='teacher/assessment' element={<TeacherAssessmentPage/>}></Route>
+            <Route path='teacher/assessment/create' element={<CreateAssessmentPage/>}></Route>
           </Route>
+            <Route path="*" element={<PageNotFound/>}></Route>
         </Routes>  
       </Router>
     </Suspense>
