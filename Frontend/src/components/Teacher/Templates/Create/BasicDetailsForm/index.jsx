@@ -25,9 +25,10 @@ function  TemplatesBasicDetailsForm() {
                 />
                 <CustomInput 
                     inputType={InputTypes.MULTILINE} 
+                    type="text"
                     value={description}
                     label="Description" 
-                    onChange={(value)=>handleChange("description", value)}
+                    onChange={(e)=>handleChange("description", e.target.value)}
                     placeholder="Enter a Description"
                 />
 
@@ -36,14 +37,14 @@ function  TemplatesBasicDetailsForm() {
                         inputType={InputTypes.MULTILINE} 
                         value={subject}
                         label="Subject" 
-                        onChange={(value)=>handleChange("subject", value)}
+                        onChange={(e)=>handleChange("subject", e.target.value)}
                         placeholder="e.g. Mathematics, Science, etc."
                     />
                     <CustomInput 
                         inputType={InputTypes.MULTILINE}
                         value={gradeLevel }
                         label="Grade" 
-                        onChange={(value)=>handleChange("gradeLevel", value)}
+                        onChange={(e)=>handleChange("gradeLevel", e.targetvalue)}
                         placeholder="e.g. 10th Grade, 12th Grade, etc."
                     />
                 </div>

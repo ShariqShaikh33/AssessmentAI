@@ -8,4 +8,4 @@ function CustomCheckbox({value, onChange}) {
   )
 }
 
-export default CustomCheckbox
+export default CustomCheckbox;

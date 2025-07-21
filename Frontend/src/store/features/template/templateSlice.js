@@ -11,9 +11,17 @@ export const templateSlice = createSlice({
         addNewQuestionType: Actions.addNewQuestionTypeAction,
         removeQuestionType: Actions.removeQuestionTypeAction,
         updateQuestionTypeData: Actions.updateQuestionTypeDataAction,
-        updateQuestionTypeOptions: Actions.updateQuestionTypeOptionsAction
+        updateQuestionTypeOptions: Actions.updateQuestionTypeOptionsAction,
+        resetTemplateState: Actions.resetTemplateStateAction,
     },
 });
 
-export const {setTemplateKey, addNewQuestionType, removeQuestionType, updateQuestionTypeData, updateQuestionTypeOptions} = templateSlice.actions;
+export const {
+    setTemplateKey, 
+    addNewQuestionType, 
+    removeQuestionType, 
+    updateQuestionTypeData, 
+    updateQuestionTypeOptions,
+    resetTemplateState,
+} = templateSlice.actions;
 export default templateSlice.reducer;

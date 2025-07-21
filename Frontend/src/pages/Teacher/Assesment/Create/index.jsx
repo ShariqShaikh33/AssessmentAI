@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHeading } from '../../../../hooks';
 import CustomInput from '../../../../components/common/inputs/CustomInput';
 import { InputTypes } from '../../../../components/common/inputs/CustomInput/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { assessmentsSelector } from '../../../../store/features/assessment/selectors';
-import { setAssessmentsKey } from '../../../../store/features/assessment/assessmentsSlice';
+import { resetAssessmentState, setAssessmentsKey } from '../../../../store/features/assessment/assessmentsSlice';
 
 function CreateAssessmentPage() {
     const { setHeading, setSubheading } = useHeading();
@@ -12,6 +12,10 @@ function CreateAssessmentPage() {
     setSubheading("This will help you create assessments");
     
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(resetAssessmentState());
+    },[])
 
     const {template, title, description} = useSelector(assessmentsSelector);
     
