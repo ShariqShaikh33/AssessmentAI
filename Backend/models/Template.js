@@ -1,5 +1,5 @@
-import { Schema } from "mongoose";
-import { QuestionTemplateSchema } from "./QuestionTemplateSchema";
+import { model, Schema } from "mongoose";
+import { QuestionTemplateSchema } from "./QuestionTemplateSchema.js";
 
 const TemplateSchema = new Schema(
     {

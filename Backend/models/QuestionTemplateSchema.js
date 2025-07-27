@@ -1,6 +1,6 @@
 import {Schema} from 'mongoose'
-import { QuestionTemplateMetadataSchema } from './QuestionTemplateMetadataSchema'
-import { QuestionDifficultyEnum, QuestionTypeEnum } from "../types";
+import { QuestionTemplateMetadataSchema } from './QuestionTemplateMetadataSchema.js'
+import { QuestionDifficultyEnum, QuestionTypeEnum } from "../types/index.js";
 
 export const QuestionTemplateSchema = new Schema(
     {

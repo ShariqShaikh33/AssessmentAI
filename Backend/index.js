@@ -1,19 +1,24 @@
 import {config} from "dotenv";
 import express,{json} from "express";
-import mongoose, { connect } from "mongoose";
+import {connect} from "mongoose";
+import { templateRouter } from "./routes/index.js";
+import { errorHandler } from "./utils/errorHandler.js";
 
 config();
 const app = express();
 app.use(json());
 
-mongoose.connect(process.env.MONGO_URI)
+connect(process.env.MONGO_URI)
 .then(()=>{
     console.log("Connected to the Database");
 })
 .catch(()=>{
-    console.error("Cannot connect to the Database");
+    console.error("Cannot connect to the Database",err);
 });
 
+app.use("/api/templates", templateRouter);
+
+app.use(errorHandler); 
 
 app.get("/",(req,res)=>{
     res.send("Quizzy is UP");

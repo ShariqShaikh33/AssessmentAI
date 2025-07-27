@@ -1,2 +1,2 @@
-export * from "./QuestionTypeEnum";
-export * from "./QuestionDifficultyEnum"
+export * from "./QuestionTypeEnum.js";
+export * from "./QuestionDifficultyEnum.js"
