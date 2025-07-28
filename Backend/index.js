@@ -3,10 +3,13 @@ import express,{json} from "express";
 import {connect} from "mongoose";
 import { templateRouter } from "./routes/index.js";
 import { errorHandler } from "./utils/errorHandler.js";
+import cors from "cors";
+
 
 config();
 const app = express();
 app.use(json());
+app.use(cors());
 
 connect(process.env.MONGO_URI)
 .then(()=>{

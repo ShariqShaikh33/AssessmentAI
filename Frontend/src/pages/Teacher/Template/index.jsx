@@ -6,6 +6,7 @@ import { templatesColumn } from './utils/templatesCoulmns';
 import { useTemplateData } from './hooks';
 import { PlusIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useGetAllTemplatesQuery } from '../../../store/api';
 
 
 function TeacherTemplatePage() {
@@ -14,6 +15,8 @@ function TeacherTemplatePage() {
   setSubheading("Manage your assessment templates");
   const navigate = useNavigate();
 
+  const {data} = useGetAllTemplatesQuery();
+  
   const handleClick=()=>{
   console.log("clicked");
   navigate("/teacher/template/create");

@@ -1,9 +1,17 @@
 import { EditIcon, EyeIcon, TrashIcon } from "lucide-react";
 import {useNavigate} from 'react-router-dom'
+import { useGetAllTemplatesQuery } from "../../../../store/api";
 
 export const useTemplateData =()=>{
     const navigate = useNavigate();
-    const rows = [];
+    const {data=[]} = useGetAllTemplatesQuery();
+    
+    const rows = data?.map((template)=>({
+        title: template.title,
+        subject: template.subject,
+        gradeLevel: template.gradeLevel
+    })
+    );
 
     const actions = [
         {
