@@ -17,7 +17,7 @@ const TemplateSchema = new Schema(
         gradeLevel: {
             type: String,
         },
-        questionsTemplate: {
+        questionsTemplates: {
             type: [QuestionTemplateSchema],
             required: true,
         },

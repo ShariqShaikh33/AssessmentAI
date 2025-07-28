@@ -1,4 +1,4 @@
-import {Schema} from 'mongoose'
+import {model, Schema} from 'mongoose'
 import { QuestionTemplateMetadataSchema } from './QuestionTemplateMetadataSchema.js'
 import { QuestionDifficultyEnum, QuestionTypeEnum } from "../types/index.js";
 
@@ -32,4 +32,6 @@ export const QuestionTemplateSchema = new Schema(
         required: true,
     }
 }
-)
+);
+
+export const QuestionTemplate =  model("QuestionTemplate", QuestionTemplateSchema);

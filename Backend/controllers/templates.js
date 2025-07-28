@@ -1,14 +1,26 @@
-import { Template } from "../models/index.js";
+import { QuestionTemplate, Template } from "../models/index.js";
 
 export const createTemplate = async (req,res,next)=>{
     try{
-        const {name, description, questions} = req.body;
+        const {questionTemplates: questionTemplatesJson,} = req.body;
+        const template = new Template(req.body);
         
+        const questionTemplates = questionTemplatesJson.map(
+            (questionTemplates)=> new QuestionTemplate(questionTemplates)
+        );
+
+        template.questionsTemplates = questionTemplates;
+
+        const savedTemplate = await template.save();
+
+
+        console.log(template);
+
         //TODO: Implement the logic to create a template;
         
         return res.status(201).json({
             success: true,
-            data: null,
+            data: savedTemplate,
         });
     }
     catch (e){

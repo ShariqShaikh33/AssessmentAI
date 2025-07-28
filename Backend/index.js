@@ -12,7 +12,7 @@ connect(process.env.MONGO_URI)
 .then(()=>{
     console.log("Connected to the Database");
 })
-.catch(()=>{
+.catch((err)=>{
     console.error("Cannot connect to the Database",err);
 });
 
