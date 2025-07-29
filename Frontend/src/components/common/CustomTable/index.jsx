@@ -43,7 +43,7 @@ function CustomTable({columns=[], data=[], actions=[]}) {
                                 <td className='border p-1 flex items-center gap-2'>
                                     {actions.map((action)=>(
                                         
-                                        <div className='cursor-pointer' onClick={()=>action.onClick(row)}>{action.icon}</div>
+                                        <div key={action.id} className='cursor-pointer' onClick={()=>action.onClick(row)}>{action.icon}</div>
                                     ))}
                                 </td>
                             )}

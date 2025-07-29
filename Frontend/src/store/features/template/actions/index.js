@@ -1,3 +1,4 @@
 export * from './setTemplateKeyAction'; 
 export * from "./questionTypes";
 export * from "./resetTemplateStateAction";
+export * from "./setTemplateAction";

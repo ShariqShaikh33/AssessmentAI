@@ -24,6 +24,7 @@ function App() {
             <Route path='teacher/dashboard' element={<TeacherDashboard/>}></Route>
             <Route path='teacher/template' element={<TeacherTemplatePage/>}></Route>
             <Route path="teacher/template/create" element={<CreateTemplatePage/>}></Route>
+            <Route path='teacher/template/:id' element={<CreateTemplatePage/>}></Route>
             <Route path='teacher/assessment' element={<TeacherAssessmentPage/>}></Route>
             <Route path='teacher/assessment/create' element={<CreateAssessmentPage/>}></Route>
           </Route>

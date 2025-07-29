@@ -1,12 +1,14 @@
 import { EditIcon, EyeIcon, TrashIcon } from "lucide-react";
 import {useNavigate} from 'react-router-dom'
-import { useGetAllTemplatesQuery } from "../../../../store/api";
+import { useDeleteTemplateMutation, useGetAllTemplatesQuery } from "../../../../store/api";
 
 export const useTemplateData =()=>{
     const navigate = useNavigate();
     const {data=[]} = useGetAllTemplatesQuery();
-    
+    const [triggerDelete] = useDeleteTemplateMutation();
+
     const rows = data?.map((template)=>({
+        ...template,
         title: template.title,
         subject: template.subject,
         gradeLevel: template.gradeLevel
@@ -17,7 +19,7 @@ export const useTemplateData =()=>{
         {
             icon: <EyeIcon size={20} className="text-green-500"/>,
             onClick: (row)=>{
-                navigate(`/teacher/template/${row.id}`);
+                navigate(`/teacher/template/${row._id}`);
             },
         },
         {
@@ -28,7 +30,9 @@ export const useTemplateData =()=>{
         },
         {
             icon: <TrashIcon size={20} className="text-red-500"/>,
-            onClick: ()=>{},
+            onClick: (row)=>{
+                triggerDelete(row._id);
+            },
         }
     ]
 

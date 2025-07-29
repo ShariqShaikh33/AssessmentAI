@@ -1,9 +1,12 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../constants";
+import { setTemplate } from "../features/template/templateSlice";
+import { templateToState } from "../utlis/templateToState";
 
 
 export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
+    tagTypes: ["Templates"],
     endpoints: (build)=>({
         getAllTemplates: build.query({
             query: ()=>({
@@ -12,9 +15,38 @@ export const apiSlice = createApi({
             }),
             transformResponse: (response)=>{
                 return response.data ?? [];
-            }
+            },
+            providesTags: ["Templates"],
+        }),
+
+        getTemplate: build.query({
+            query: (id)=>({
+                url: `/templates/${id}`,
+                method: "GET",
+            }),
+            transformResponse: (response)=>{
+                return response.data ?? {};
+            },
+            onQueryStarted: async (id ,{queryFulfilled, dispatch})=>{
+                const {data} = await queryFulfilled;
+                console.log("data",data);
+                dispatch(
+                    setTemplate({
+                    value: templateToState(data)
+                }),
+            );
+            },
+            providesTags: ["Templates"],
+        }),
+
+        deleteTemplate: build.mutation({
+            query: (id)=>({
+                url: `/templates/${id}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["Templates"],
         })
     })
 });
 
-export const {useGetAllTemplatesQuery} = apiSlice;
+export const {useGetAllTemplatesQuery, useGetTemplateQuery,  useDeleteTemplateMutation} = apiSlice;
