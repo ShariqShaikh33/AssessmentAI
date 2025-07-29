@@ -6,8 +6,7 @@ import { templatesColumn } from './utils/templatesCoulmns';
 import { useTemplateData } from './hooks';
 import { PlusIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useGetAllTemplatesQuery } from '../../../store/api';
-
+import { useGetAllTemplatesQuery } from '../../../store/features/template/api';
 
 function TeacherTemplatePage() {
   const { setHeading,setSubheading } = useHeading();

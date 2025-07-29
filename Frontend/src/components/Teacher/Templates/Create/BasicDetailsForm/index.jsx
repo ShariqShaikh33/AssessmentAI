@@ -42,9 +42,9 @@ function  TemplatesBasicDetailsForm() {
                     />
                     <CustomInput 
                         inputType={InputTypes.MULTILINE}
-                        value={gradeLevel }
+                        value={gradeLevel}
                         label="Grade" 
-                        onChange={(e)=>handleChange("gradeLevel", e.targetvalue)}
+                        onChange={(e)=>handleChange("gradeLevel", e.target.value)}
                         placeholder="e.g. 10th Grade, 12th Grade, etc."
                     />
                 </div>

@@ -1,6 +1,6 @@
 import { EditIcon, EyeIcon, TrashIcon } from "lucide-react";
 import {useNavigate} from 'react-router-dom'
-import { useDeleteTemplateMutation, useGetAllTemplatesQuery } from "../../../../store/api";
+import { useDeleteTemplateMutation, useGetAllTemplatesQuery } from "../../../../store/features/template/api";
 
 export const useTemplateData =()=>{
     const navigate = useNavigate();
