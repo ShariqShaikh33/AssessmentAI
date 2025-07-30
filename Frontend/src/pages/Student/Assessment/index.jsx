@@ -1,7 +1,7 @@
 import CustomTable from '../../../components/common/CustomTable';
 import { useHeading } from '../../../hooks';
-import { useAssessmentData } from '../../Teacher/Assesment/hooks';
-import { assessmentsColumn } from '../../Teacher/Assesment/utils';
+import { useAssessmentData } from './hooks';
+import { assessmentsColumn } from './utils';
 
 
 function StudentAssessmentPage() {
