@@ -1,11 +1,45 @@
 import { Assessment} from "../models/index.js";
+import { createAssessmentQuestions } from "../utils/index.js";
+
+export const createAssessmentFromUI = async(req,res,next)=>{
+try{
+    const assessment = new Assessment(req.body);
+    const questions = await createAssessmentQuestions(assessment);
+    const totalMarks = questions.reduce(
+            (acc,val)=> acc+(val.marks ?? 0),
+            0,
+        );
+    assessment.totalMarks = totalMarks;
+    await assessment.save();
+
+    return res.status(201).json({
+        success: true,
+        assessment,
+    });
+}
+catch(e){
+    const error = new Error("Failed to create from UI",{
+        cause: e,
+    });
+}
+};
 
 export const createAssessment = async (req,res,next)=>{
     try{
-        //TODO: Implement the logic to create a assessment;
+        const {questions=[]} = req.body;
+        const totalMarks = questions.reduce(
+            (acc,val)=> acc+(val.marks ?? 0),
+            0,
+        );
+
+        const assessment = new Assessment(req.body);
+        assessment.totalMarks = totalMarks;
         
+        await assessment.save();
+
         return res.status(201).json({
             success: true,
+            assessment,
         });
     }
     catch (e){
@@ -18,7 +52,7 @@ export const createAssessment = async (req,res,next)=>{
 
 export const getAllAssessment = async (req,res,next)=>{
     try {
-        const assessments = await Assessment.find();
+        const assessments = await Assessment.find({}).populate("template");
     
         return res.status(200).json({
             success: true,

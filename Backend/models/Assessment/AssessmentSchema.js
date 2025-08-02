@@ -20,6 +20,7 @@ const AssessmentSchema = new Schema({
     status:{
         type: String,
         enum: Object.values(AssessmentStatusEnum),
+        default: AssessmentStatusEnum.PENDING,
         required: true,
     },
     publishedAt:{

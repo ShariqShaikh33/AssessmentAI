@@ -6,7 +6,6 @@ import { assessmentsColumn } from './utils';
 import { PlusIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-
 function TeacherAssessmentPage() {
 const { setHeading,setSubheading } = useHeading();
   setHeading("Assessment");

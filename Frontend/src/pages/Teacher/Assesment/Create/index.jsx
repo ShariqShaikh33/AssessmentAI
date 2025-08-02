@@ -5,22 +5,41 @@ import { InputTypes } from '../../../../components/common/inputs/CustomInput/uti
 import { useDispatch, useSelector } from 'react-redux';
 import { assessmentsSelector } from '../../../../store/features/assessment/selectors';
 import { resetAssessmentState, setAssessmentsKey } from '../../../../store/features/assessment/assessmentsSlice';
+import { useParams } from 'react-router-dom';
+import { useGetAssessmentQuery } from '../../../../store/features/assessment/api/getAssessmentApi';
+import { useGetAllTemplatesQuery } from '../../../../store/features/template/api';
+import CreateAssessmentButton from '../../../../components/Teacher/Assessment/CreateAssessmentButton';
 
 function CreateAssessmentPage() {
+    const { id } = useParams();
+    const {isLoading} = useGetAssessmentQuery(id, {
+        refetchOnMountOrArgChange: true,
+        skip: !id,
+    });
+
+    const {data: templates=[]}= useGetAllTemplatesQuery()
+
     const { setHeading, setSubheading } = useHeading();
     setHeading("Create Assessment");
     setSubheading("This will help you create assessments");
     
     const dispatch = useDispatch();
-
-    useEffect(()=>{
-        dispatch(resetAssessmentState());
-    },[])
-
+    
     const {template, title, description} = useSelector(assessmentsSelector);
     
     const handleChange=(key, value)=>{
         dispatch(setAssessmentsKey({key,value}));
+    }
+
+    useEffect(()=>{
+        return ()=>{
+            dispatch(resetAssessmentState());
+        }
+    },[])
+
+    
+    if(isLoading){
+        return <div>Loading...</div>
     }
 
     return (
@@ -30,7 +49,12 @@ function CreateAssessmentPage() {
                     inputType={InputTypes.DROPDOWN}
                     value={template || "Choose from Template"} 
                     label={"Select Template"}
-                    onChange = {(e)=>handleChange("template", e.target.value)}
+                    onChange = {(e)=>handleChange("template", e)}
+                    options = {templates.map((template)=>({
+                        id: template._id,
+                        label: template.title,
+                        ...template,
+                    }))}
                 />
 
                 <CustomInput
@@ -48,6 +72,8 @@ function CreateAssessmentPage() {
                     placeholder={"e.g. This is a quiz to test your knowledge of Math."}
                     onChange = {(e)=>handleChange("description", e.target.value)}
                 />
+
+                <CreateAssessmentButton/>
 
             </form>
         </div>

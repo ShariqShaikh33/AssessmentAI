@@ -1,7 +1,8 @@
 import { Schema } from "mongoose";
 import { QuestionDifficultyEnum, QuestionTypeEnum } from "../../types/index.js";
 
-export const BaseQuestionSchema = new Schema({
+export const BaseQuestionSchema = new Schema(
+    {
     type: {
         type: String,
         enum: Object.values(QuestionTypeEnum),

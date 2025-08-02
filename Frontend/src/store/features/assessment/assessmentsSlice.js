@@ -9,8 +9,9 @@ export const assessmentsSlice = createSlice({
     reducers:{
         setAssessmentsKey : Actions.setAssessmentsKeyAction,
         resetAssessmentState: Actions.resetAssessmentStateAction,
+        setAssessment: Actions.setAssessmentAction,
     },
 });
 
-export const {setAssessmentsKey, resetAssessmentState} = assessmentsSlice.actions;
+export const {setAssessmentsKey, resetAssessmentState, setAssessment} = assessmentsSlice.actions;
 export default assessmentsSlice.reducer;
