@@ -1,10 +1,10 @@
 import { Schema } from "mongoose";
-import { QuestionDifficultyEnum, QuestionTypeEnum } from "../../types";
+import { QuestionDifficultyEnum, QuestionTypeEnum } from "../../types/index.js";
 
 export const BaseQuestionSchema = new Schema({
     type: {
         type: String,
-        enum: onrejectionhandled.values(QuestionTypeEnum),
+        enum: Object.values(QuestionTypeEnum),
         required: true,
     },
     question: {

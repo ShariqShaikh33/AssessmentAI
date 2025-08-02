@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
-import { AssessmentStatusEnum } from "../../types";
-import { BaseQuestionSchema } from "./BaseQuestionSchema";
+import { AssessmentStatusEnum, QuestionTypeEnum } from "../../types/index.js";
+import { BaseQuestionSchema } from "./BaseQuestionSchema.js";
+import { OptionSchema } from "./OptionSchema.js";
 
 const AssessmentSchema = new Schema({
     title:{
@@ -35,6 +36,34 @@ const AssessmentSchema = new Schema({
 {
     timestamps: true,
 });
+
+AssessmentSchema.path("questions").discriminator(
+    QuestionTypeEnum.MULTIPLE_CHOICE_QUESTION,
+    new Schema({
+        options: {
+            type: [OptionSchema],
+            validate: (e)=>e.length === 4,
+        },
+    }),
+);
+
+AssessmentSchema.path("questions").discriminator(
+    QuestionTypeEnum.SHORT_ANSWER_QUESTION,
+    new Schema({
+        sampleAnswer:{
+            type: [String],
+        },
+    }),
+);
+
+AssessmentSchema.path("questions").discriminator(
+    QuestionTypeEnum.LONG_ANSWER_QUESTION,
+    new Schema({
+        sampleAnswer:{
+            type: [String],
+        },
+    }),
+);
 
 AssessmentSchema.path("questions")
 

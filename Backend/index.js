@@ -1,7 +1,7 @@
 import {config} from "dotenv";
 import express,{json} from "express";
 import {connect} from "mongoose";
-import { templateRouter } from "./routes/index.js";
+import { assessmentRouter, templateRouter } from "./routes/index.js";
 import { errorHandler } from "./utils/errorHandler.js";
 import cors from "cors";
 
@@ -20,6 +20,7 @@ connect(process.env.MONGO_URI)
 });
 
 app.use("/api/templates", templateRouter);
+app.use("/api/assessments", assessmentRouter);
 
 app.use(errorHandler); 
 
