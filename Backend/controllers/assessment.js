@@ -4,12 +4,17 @@ import { createAssessmentQuestions } from "../utils/index.js";
 export const createAssessmentFromUI = async(req,res,next)=>{
 try{
     const assessment = new Assessment(req.body);
+
     const questions = await createAssessmentQuestions(assessment);
-    const totalMarks = questions.reduce(
-            (acc,val)=> acc+(val.marks ?? 0),
-            0,
-        );
-    assessment.totalMarks = totalMarks;
+    console.log(questions);
+    assessment.questions = questions;
+    console.log(assessment);
+    // const totalMarks = (questions.reduce(
+    //         (acc,val)=> acc+(val.marks ?? 0),
+    //         0,
+    //     ) ?? []);
+        
+    // assessment.totalMarks = totalMarks;
     await assessment.save();
 
     return res.status(201).json({
@@ -21,6 +26,7 @@ catch(e){
     const error = new Error("Failed to create from UI",{
         cause: e,
     });
+    return next(error);
 }
 };
 

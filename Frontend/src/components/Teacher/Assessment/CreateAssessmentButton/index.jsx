@@ -10,11 +10,12 @@ function CreateAssessmentButton() {
   const navigate = useNavigate();
   const [triggerCreate,{isLoading}]=useCreateAssessmentFromUIMutation();
   const assessment = useSelector(assessmentsSelector);
-  
   const handleClick =async()=>{
+    console.log("Assessment", assessment);
     if (isLoading) return ;
     try{
       await triggerCreate(assessment).unwrap();
+      console.log("Clicked");
       navigate("/teacher/assessment");
     }
     catch(error){
