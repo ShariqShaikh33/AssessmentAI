@@ -26,4 +26,5 @@ export const {
     setTemplate,
     resetTemplateState,
 } = templateSlice.actions;
+
 export default templateSlice.reducer;

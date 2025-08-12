@@ -3,16 +3,16 @@ import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 
 import { lazy } from 'react';
 import { Suspense } from 'react';
-import Loading from './components/common/Loading';
-import TeacherTemplatePage from './pages/Teacher/Template';
-import CreateTemplatePage from './pages/Teacher/Template/Create';
-import PageNotFound from './pages/404';
-import TeacherAssessmentPage from './pages/Teacher/Assesment';
-import CreateAssessmentPage from './pages/Teacher/Assesment/Create';
-import StudentLayout from './components/Student/Layout';
-import StudentDashboard from './pages/Student/dashboard';
-import StudentAssessmentPage from './pages/Student/assessment';
-import TakeAssessmentPage from './pages/Student/Assessment/takeAssessment';
+import Loading from './components/common/Loading.jsx';
+import TeacherTemplatePage from './pages/Teacher/Template/index.jsx';
+import CreateTemplatePage from './pages/Teacher/Template/Create/index.jsx';
+import PageNotFound from './pages/404.jsx';
+import TeacherAssessmentPage from './pages/Teacher/Assesment/index.jsx';
+import CreateAssessmentPage from './pages/Teacher/Assesment/Create/index.jsx';
+import StudentLayout from './components/Student/Layout/index.jsx';
+import StudentDashboard from './pages/Student/Dashboard/index.jsx';
+import StudentAssessmentPage from './pages/Student/Assessment/index.jsx';
+import TakeAssessmentPage from './pages/Student/Assessment/takeAssessment/index.jsx';
 
 const Home = lazy(()=> import("./pages/index"));
 const TeacherLayout = lazy(()=> import("./components/Teacher/Layout"));
