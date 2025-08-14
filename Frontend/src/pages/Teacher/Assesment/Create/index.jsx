@@ -11,6 +11,7 @@ import { useGetAllTemplatesQuery } from '../../../../store/features/template/api
 import CreateAssessmentButton from '../../../../components/Teacher/Assessment/CreateAssessmentButton';
 import Question from '../../../../components/common/Question';
 import { QuestionTypes } from '../../../../types';
+import FullQuestionComponent from '../../../../components/common/Question/FullQuestionComponent';
 
 function CreateAssessmentPage() {
     const { id } = useParams();
@@ -27,7 +28,7 @@ function CreateAssessmentPage() {
     
     const dispatch = useDispatch();
     
-    const {template, title, description} = useSelector(assessmentsSelector);
+    const {template, title, description, questions} = useSelector(assessmentsSelector);
     
     const handleChange=(key, value)=>{
         dispatch(setAssessmentsKey({key,value}));
@@ -74,14 +75,16 @@ function CreateAssessmentPage() {
                     placeholder={"e.g. This is a quiz to test your knowledge of Math."}
                     onChange = {(e)=>handleChange("description", e.target.value)}
                 />
-
                 <CreateAssessmentButton/>
 
-                <Question type={QuestionTypes.MULTIPLE_CHOICE}/>
-                {/* <Question type={QuestionTypes.SHORT_ANSWER}/> */}
-                {/* <Question type={QuestionTypes.LONG_ANSWER}/> */}
-                
-
+                <div>
+                    <h1 className='text-3xl font-bold'>Generated Questions</h1>
+                    <div className='flex flex-col gap-2 mt-4'>
+                        {questions.map((question, index)=>(
+                            <FullQuestionComponent question={question} index={index}/>
+                        ))}
+                    </div>
+                </div>                
             </form>
         </div>
     )

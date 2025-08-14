@@ -6,23 +6,18 @@ import ExplanationComponent from './components/ExplanationComponent';
 
 const hints=[
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis necessitatibus ab neque, architecto delectus doloribus et dolor quod corrupti harum ipsa voluptatem iure vero earum laudantium, perferendis culpa molestias aliquam!",        
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis necessitatibus ab neque, architecto delectus doloribus et dolor quod corrupti harum ipsa voluptatem iure vero earum laudantium, perferendis culpa molestias aliquam!",        
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis necessitatibus ab neque, architecto delectus doloribus et dolor quod corrupti harum ipsa voluptatem iure vero earum laudantium, perferendis culpa molestias aliquam!",        
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis necessitatibus ab neque, architecto delectus doloribus et dolor quod corrupti harum ipsa voluptatem iure vero earum laudantium, perferendis culpa molestias aliquam!",        
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis necessitatibus ab neque, architecto delectus doloribus et dolor quod corrupti harum ipsa voluptatem iure vero earum laudantium, perferendis culpa molestias aliquam!",        
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis necessitatibus ab neque, architecto delectus doloribus et dolor quod corrupti harum ipsa voluptatem iure vero earum laudantium, perferendis culpa molestias aliquam!",        
-]
+    ]
 
-function Question({type}) {
+function Question({question}) {
     return (
         <div className='flex flex-col gap-4'>
             <h2 className='text-2xl font-bold'>
                 What is the primary use of React hooks?
             </h2>
 
-            <HandleQuestionRender type={type}/>
+            <HandleQuestionRender type={question.type}/>
 
-            <HintComponent hints={hints}/>
+            <HintComponent hints={[]}/>
 
             <AnswerComponent answer='lorem ipsum'/>
 
