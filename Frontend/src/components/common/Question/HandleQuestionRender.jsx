@@ -4,10 +4,10 @@ import ShortAnswerQuestion from './ShortAnswerQuestion';
 import LongAnswerQuestion from './LongAnswerQuestion';
 import { QuestionTypes } from '../../../types';
 
-function HandleQuestionRender({type}) {
-    switch(type){
+function HandleQuestionRender({question}) {
+    switch(question.type){
         case QuestionTypes.MULTIPLE_CHOICE:
-            return <MultipheChoiceQuestion/>;
+            return <MultipheChoiceQuestion question={question}/>;
         case QuestionTypes.SHORT_ANSWER:
             return <ShortAnswerQuestion/>;
         case QuestionTypes.LONG_ANSWER:

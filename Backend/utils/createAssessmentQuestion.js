@@ -18,7 +18,7 @@ export const createAssessmentQuestions = async (assessment) =>{
     if(!templateId) return;
 
     const template = await Template.findById(templateId);
-    console.log("template", template);
+    console.log("template", template.questionsTemplates);
     if(!template) return;
 
     const prompt = getQuestionListGenerationPrompt(assessment, template);
@@ -37,6 +37,7 @@ export const createAssessmentQuestions = async (assessment) =>{
         console.log("Response from AI");
     
         const questions = JSON.parse(response.text);
+        console.log(questions);
         return questions;
     }
     catch(error){

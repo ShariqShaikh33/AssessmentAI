@@ -13,7 +13,7 @@ function FullQuestionComponent({question, index}) {
             <ChipComponent text={`Question ${index+1} of ${questions.length}`}/>
             <ChipComponent text={`${questionOptions.find(q=>q.id===question.type).label}`}/>
         </div>
-        <Question question={question}/>
+        <Question key={question._id} question={question}/>
       
     </div>
   )

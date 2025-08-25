@@ -4,5 +4,6 @@ export const assessmentsInitialState = {
     description: "",
     template: "",
     questions: [],
+    currentQuestionIndex: 0,
     
 }

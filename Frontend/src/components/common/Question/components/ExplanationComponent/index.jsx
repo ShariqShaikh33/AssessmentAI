@@ -1,9 +1,9 @@
 import { Sparkle } from 'lucide-react'
 
 
-function ExplanationComponent({explanation = "", showExplanation=true}) {
-    if(!explanation || !showExplanation) return ;
-
+function ExplanationComponent({explanation = [], showExplanation=true}) {
+    console.log(explanation);
+    if(explanation.length===0) return;
     return (
         <div className='flex flex-col gap-2'>
             <h3 className='flex items-center gap-1 font-semibold text-base'>

@@ -6,7 +6,6 @@ try{
     const assessment = new Assessment(req.body);
 
     const questions = await createAssessmentQuestions(assessment);
-    console.log(questions);
     assessment.questions = questions;
     console.log(assessment);
     // const totalMarks = (questions.reduce(

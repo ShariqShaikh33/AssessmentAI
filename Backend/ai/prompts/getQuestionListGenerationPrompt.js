@@ -1,6 +1,8 @@
+import { CopyMinus } from "lucide-react";
 import { QuestionTypeEnum } from "../../types/index.js";
 
 export const getQuestionListGenerationPrompt = (assesment, template) => {
+
   return `
     You are a helpful assistant that generates a list of questions for a given assesment.
     Here is the information you have:
@@ -25,12 +27,13 @@ export const getQuestionListGenerationPrompt = (assesment, template) => {
         Difficulty Level: ${questionTemplate.difficultyLevel}
 
         Some extra information about the question type:
-        - Should you include hints: ${questionTemplate.metadata.includeHints}
+        - Should you include hints: ${questionTemplate.metadata[0].includeHints}
         - Should you include explanations: ${
-          questionTemplate.metadata.includeExplanations
+          questionTemplate.metadata[0].includeExplanations
         }
+        - If explanations is true, then please provide explanations for the answers.
         ${
-          questionTemplate.metadata.enableNegativeMarking
+          questionTemplate.metadata[0].enableNegativeMarking
             ? "- You need to include the negativeMarks for the question appropriately"
             : ""
         } 
