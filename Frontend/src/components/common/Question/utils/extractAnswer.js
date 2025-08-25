@@ -15,7 +15,7 @@ export const extractAnswer = (question) => {
     }
     case QuestionTypes.SHORT_ANSWER:
     case QuestionTypes.LONG_ANSWER:
-      return question.sampleAnswer[0];
+      return question.sampleAnswer;
     default:
       return "";
   }

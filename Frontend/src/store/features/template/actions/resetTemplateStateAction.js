@@ -1,5 +1,5 @@
-import { templateInitialState } from "../initialState"
+import { templateInitialState } from "../initialState";
 
-export const resetTemplateStateAction=(state)=>{
-    Object.assign(state, templateInitialState);
-}
+export const resetTemplateStateAction = (state) => {
+  Object.assign(state, templateInitialState);
+};

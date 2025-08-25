@@ -1,2 +1,3 @@
-export * from './useHeading';
-export * from "./common/index.js"
+export * from "./useHeading.js";
+
+export * from "./common/index.js";

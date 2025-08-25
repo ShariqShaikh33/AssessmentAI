@@ -1,2 +1,1 @@
-const templateSelector = (state) => state.template;
-export { templateSelector };
+export const templateSelector = (state) => state.template;

@@ -1,5 +1,5 @@
+export const removeQuestionTypeAction = (state, { payload }) => {
+  const { index } = payload;
 
-export const removeQuestionTypeAction = (state, {payload}) => {
-    const {index} = payload;
-    state.questionTypes.splice(index,1);
-}
+  state.questionTypes.splice(index, 1);
+};

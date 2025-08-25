@@ -1,13 +1,12 @@
-export const templateToState = (template)=>{
-    console.log(template);  
-    return {
+export const templateToState = (template) => {
+  return {
+    ...template,
+    questionTypes: template?.questionsTemplates.map((template) => ({
+      type: template.type,
+      data: {
         ...template,
-        questionTypes: template?.questionsTemplates?.map((template)=>({
-            type: template.type,
-            data: {
-                ...template,
-                options: template.metadata,
-            }
-        })),
-    }
-}
+        options: template.metadata,
+      },
+    })),
+  };
+};

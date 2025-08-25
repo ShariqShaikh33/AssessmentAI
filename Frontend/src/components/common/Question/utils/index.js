@@ -1,3 +1,3 @@
-export * from "./extractAnswer.js";
-export * from "./getQuestionOptionPrefix.js";
-export * from "./defaultQuestionConfig.js"
+export * from "./extractAnswer";
+export * from "./getQuestionOptionPrefix";
+export * from "./defaultQuestionConfig";

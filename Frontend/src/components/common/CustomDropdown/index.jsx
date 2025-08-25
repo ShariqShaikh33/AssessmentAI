@@ -1,22 +1,21 @@
-import React from 'react'
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css'; 
+import Tippy from "@tippyjs/react";
+import React from "react";
+import "tippy.js/dist/tippy.css";
 
-function CustomDropdown({trigger, children}) {
+function CustomDropdown({ trigger, children }) {
   return (
-    <div className='relative w-full'>
+    <div className="relative w-full">
       <Tippy
-        interactive={true} 
+        interactive={true}
         placement="bottom-start"
-        arrow={false}
-        className='!bg-white !text-black !max-w-full cursor-pointer border shadow-md rounded-md p-2'
         trigger="click"
-        content={children}
-      >
+        arrow={false}
+        className="!bg-white !text-black border rounded-md shadow-md !w-full !max-w-full"
+        content={children}>
         {trigger}
       </Tippy>
     </div>
-  )
+  );
 }
 
-export default CustomDropdown
+export default CustomDropdown;

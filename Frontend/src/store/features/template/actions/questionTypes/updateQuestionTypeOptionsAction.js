@@ -1,6 +1,9 @@
+export const updateQuestionTypeOptionsAction = (state, { payload }) => {
+  const { index, key, value } = payload;
 
-export const updateQuestionTypeOptionsAction = (state, {payload})=>{
-    const {index, key, value} = payload;
-    if(!state.questionTypes[index]) return
-    state.questionTypes[index].data.options[key] = value;
-}
+  const questionType = state.questionTypes[index];
+
+  if (!questionType) return;
+
+  questionType.data.options[key] = value;
+};

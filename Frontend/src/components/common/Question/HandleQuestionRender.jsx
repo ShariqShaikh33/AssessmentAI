@@ -1,18 +1,32 @@
-import React from 'react'
-import MultipheChoiceQuestion from './MultipleChoiceQuestion';
-import ShortAnswerQuestion from './ShortAnswerQuestion';
-import LongAnswerQuestion from './LongAnswerQuestion';
-import { QuestionTypes } from '../../../types';
+import React from "react";
+import { QuestionTypes } from "../../../types/index.js";
+import MultipleChoiceQuestion from "./MultipleChoiceQuestion/index.jsx";
+import ShortAnswerQuestion from "./ShortAnswerQuestion/index.jsx";
+import LongAnswerQuestion from "./LongAnswerQuestion/index.jsx";
 
-function HandleQuestionRender({question}) {
-    switch(question.type){
-        case QuestionTypes.MULTIPLE_CHOICE:
-            return <MultipheChoiceQuestion question={question}/>;
-        case QuestionTypes.SHORT_ANSWER:
-            return <ShortAnswerQuestion/>;
-        case QuestionTypes.LONG_ANSWER:
-            return <LongAnswerQuestion/>;
-    }
+function HandleQuestionRender({ question, letUserAnswer = false }) {
+  switch (question.type) {
+    case QuestionTypes.MULTIPLE_CHOICE:
+      return (
+        <MultipleChoiceQuestion
+          letUserAnswer={letUserAnswer}
+          question={question}
+        />
+      );
+    case QuestionTypes.SHORT_ANSWER:
+      return (
+        <ShortAnswerQuestion
+          question={question}
+          letUserAnswer={letUserAnswer}
+        />
+      );
+    case QuestionTypes.LONG_ANSWER:
+      return (
+        <LongAnswerQuestion question={question} letUserAnswer={letUserAnswer} />
+      );
+    default:
+      return null;
+  }
 }
 
 export default HandleQuestionRender;

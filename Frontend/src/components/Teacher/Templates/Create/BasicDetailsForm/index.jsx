@@ -1,57 +1,60 @@
-import React from 'react'
-import CustomInput from '../../../../common/inputs/CustomInput';
-import { InputTypes } from '../../../../common/inputs/CustomInput/utils';
-import { useDispatch, useSelector } from 'react-redux';
-import { setTemplateKey, templateSelector} from '../../../../../store/features/template/templateSlice';
+import React from "react";
+import { InputTypes } from "../../../../common/inputs/CustomInput/types";
+import CustomInput from "../../../../common/inputs/CustomInput";
+import { useSelector } from "react-redux";
+import {
+  setTemplateKey,
+  templateSelector,
+} from "../../../../../store/features/template/templateSlice";
+import { useDispatch } from "react-redux";
 
-function  TemplatesBasicDetailsForm() {
-    const dispatch = useDispatch();
-    const {title, description, subject, gradeLevel} = useSelector(templateSelector);
+function TemplatesBasicDetailsForm() {
+  const dispatch = useDispatch();
+  const { title, description, subject, gradeLevel } =
+    useSelector(templateSelector);
 
-    const handleChange=(key,value)=>{
-        dispatch(setTemplateKey({key, value}));
-    }
-    return (
-    <div>
-       <div className='flex flex-col gap-2 w-full border-1 p-2 rounded-xl'>
-            <h1 className='text-lg font-bold border-b pb-2'>Basic Details</h1>
-            <form className='flex flex-col'>
-                <CustomInput 
-                    inputType={InputTypes.TEXT} 
-                    value={title}
-                    label="Title" 
-                    onChange={(e)=>handleChange("title", e.target.value)}
-                    placeholder="This is a placeholder"
-                />
-                <CustomInput 
-                    inputType={InputTypes.MULTILINE} 
-                    type="text"
-                    value={description}
-                    label="Description" 
-                    onChange={(e)=>handleChange("description", e.target.value)}
-                    placeholder="Enter a Description"
-                />
+  const handleChange = (key, value) => {
+    dispatch(setTemplateKey({ key, value }));
+  };
 
-                <div className='flex gap-4 w-full'>
-                    <CustomInput 
-                        inputType={InputTypes.MULTILINE} 
-                        value={subject}
-                        label="Subject" 
-                        onChange={(e)=>handleChange("subject", e.target.value)}
-                        placeholder="e.g. Mathematics, Science, etc."
-                    />
-                    <CustomInput 
-                        inputType={InputTypes.MULTILINE}
-                        value={gradeLevel}
-                        label="Grade" 
-                        onChange={(e)=>handleChange("gradeLevel", e.target.value)}
-                        placeholder="e.g. 10th Grade, 12th Grade, etc."
-                    />
-                </div>
-            </form>
+  return (
+    <div className="flex flex-col border rounded-md p-2 gap-2">
+      <h1 className="text-lg font-bold border-b pb-2">Basic Details</h1>
+      <form className="flex flex-col gap-4">
+        <CustomInput
+          inputType={InputTypes.TEXT}
+          value={title}
+          onChange={(value) => handleChange("title", value)}
+          label="Title"
+          placeholder="Example template title"
+        />
+        <CustomInput
+          inputType={InputTypes.MULTILINE}
+          value={description}
+          onChange={(value) => handleChange("description", value)}
+          label="Description"
+          placeholder="This template is used to..."
+        />
+
+        <div className="flex gap-4">
+          <CustomInput
+            inputType={InputTypes.TEXT}
+            value={subject}
+            onChange={(value) => handleChange("subject", value)}
+            label="Subject"
+            placeholder="e.g, Math, Science, Psycology..."
+          />
+          <CustomInput
+            inputType={InputTypes.TEXT}
+            value={gradeLevel}
+            onChange={(value) => handleChange("gradeLevel", value)}
+            label="Grade Level"
+            placeholder="e.g, 9, 12, College 1st Year..."
+          />
         </div>
+      </form>
     </div>
-  )
+  );
 }
 
 export default TemplatesBasicDetailsForm;

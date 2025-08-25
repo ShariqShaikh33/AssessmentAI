@@ -1,23 +1,23 @@
-import React from 'react'
-import { CustomTextInput } from '../CustomTextInput'
-import { CustomTextArea } from '../CustomTextArea';
-import { InputTypes } from './utils/InputTypes';
-import CustomDropdownInput from '../CustomDropDownInput';
-import CustomCheckbox from '../CustomCheckbox';
+import React from "react";
+import { InputTypes } from "./types";
+import CustomTextInput from "../CustomTextInput";
+import CustomTextArea from "../CustomTextArea";
+import CustomDropdownInput from "../CustomDropdownInput";
+import CustomCheckbox from "../CustomCheckbox";
 
-function HandleInputRender({inputType, ...props}) {
+function HandleInputRender({ inputType, ...props }) {
   switch (inputType) {
     case InputTypes.TEXT:
-        return <CustomTextInput {...props}/>;
+      return <CustomTextInput {...props} />;
     case InputTypes.MULTILINE:
-        return <CustomTextArea {...props}/>;
+      return <CustomTextArea {...props} />;
     case InputTypes.DROPDOWN:
-        return <CustomDropdownInput {...props}/>;
+      return <CustomDropdownInput {...props} />;
     case InputTypes.CHECKBOX:
-        return <CustomCheckbox {...props}/>;
+      return <CustomCheckbox {...props} />;
     default:
-        return null;
-    }
+      return;
+  }
 }
 
 export default HandleInputRender;

@@ -1,68 +1,72 @@
-import React from 'react'
-import { InputTypes } from '../../../common/inputs/CustomInput/utils'
-import CustomInput from '../../../common/inputs/CustomInput'
-import { questionOptions } from '../../../../utlis'
-import { useDispatch, useSelector } from 'react-redux'
-import { templateSelector } from '../../../../store/features/template/selectors'
-import { updateQuestionTypeData } from '../../../../store/features/template/templateSlice'
-import { difficultyOptions } from '../../../../utlis'
-import Options from './Options'
+import React from "react";
+import CustomInput from "../../../common/inputs/CustomInput";
+import { InputTypes } from "../../../common/inputs/CustomInput/types";
+import { questionOptions } from "../../../../utils/questionOptions";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { templateSelector } from "../../../../store/features/template/selectors";
+import { updateQuestionTypeData } from "../../../../store/features/template/templateSlice";
+import { difficultyOptions } from "../../../../utils";
+import Options from "./Options";
 
-function QuestionType({index}) {
-    const dispatch = useDispatch();
-    const {questionTypes} = useSelector(templateSelector);
-    const questionType = questionTypes[index];
+function QuestionType({ index }) {
+  const dispatch = useDispatch();
+  const { questionTypes } = useSelector(templateSelector);
+  const questionType = questionTypes[index];
 
-    const handleChange = (key,value) => {
-        dispatch(updateQuestionTypeData({index,key,value}));
-    }
-    if(!questionType) return null;
-    const questionTitle = questionOptions.find((q)=>q.id === questionType.type)?.label ?? "";
-    
-    return (
-    <div className='border rounded-xl p-2'>
-        <h2 className='border-b pb-2'>{questionTitle} Settings</h2>
-        <form className='flex flex-col gap-2 space-y-1'>
-            <div className='flex justify-between gap-4 mt-2'>
-                <CustomInput
-                inputType={InputTypes.TEXT} 
-                label="Question Count"
-                value = {questionType.data.questionCount}
-                onChange={(e)=>{handleChange("questionCount",e.target.value)}}
-                type = "number"
-                placeholder="e.g. 5"
-                />
-                <CustomInput
-                inputType={InputTypes.TEXT}
-                label="Marks Per Question"
-                value={questionType.data.marksPerQuestion}
-                onChange={(e)=>{handleChange("marksPerQuestion",e.target.value)}}
-                type="number"
-                placeholder="e.g. 2 Marks"
-                />
-            </div>
-            <CustomInput
-                inputType={InputTypes.DROPDOWN}
-                label="Difficulty Level"
-                options = {difficultyOptions}
-                value = {questionType.data.difficultyLevel}
-                onChange={(e)=>{handleChange("difficultyLevel",e)}}
-                
-                placeholder="e.g. Medium"
-            />
-            <CustomInput
-                inputType={InputTypes.MULTILINE}
-                label="Custom AI Prompt"
-                value = {questionType.data.customPrompt}
-                onChange={(e)=>{handleChange("customPrompt",e.target.value)}}
-                type = "text"
-                placeholder="Give a custom prompt to futher drive the AI's outcome"
-            />
+  const handleChange = (key, value) => {
+    dispatch(updateQuestionTypeData({ index, key, value }));
+  };
 
-            <Options index={index}/>
-        </form>
+  if (!questionType) return null;
+
+  const questionTitle =
+    questionOptions.find((q) => q.id === questionType.type)?.label ?? "";
+
+  return (
+    <div className="border p-2 rounded-md">
+      <h2 className="text-lg font-bold border-b pb-2">
+        {questionTitle} Settings
+      </h2>
+      <form className="mt-4 space-y-2">
+        <div className="flex gap-2">
+          <CustomInput
+            inputType={InputTypes.TEXT}
+            label="Question Count"
+            placeholder="e.g, 10"
+            value={questionType.data.questionCount}
+            onChange={(value) => handleChange("questionCount", value)}
+            type="number"
+          />
+          <CustomInput
+            inputType={InputTypes.TEXT}
+            label="Marks Per Question"
+            value={questionType.data.marksPerQuestion}
+            onChange={(value) => handleChange("marksPerQuestion", value)}
+            placeholder="e.g, 2"
+            type="number"
+          />
+        </div>
+        <CustomInput
+          inputType={InputTypes.DROPDOWN}
+          options={difficultyOptions}
+          value={questionType.data.difficultyLevel}
+          onChange={(value) => handleChange("difficultyLevel", value)}
+          label="Difficulty Level"
+          placeholder="e.g, Easy"
+        />
+        <CustomInput
+          inputType={InputTypes.MULTILINE}
+          value={questionType.data.customPrompt}
+          onChange={(value) => handleChange("customPrompt", value)}
+          label="Custom AI prompt"
+          placeholder="e.g, Make sure each question is unique and not similar to the previous one"
+        />
+
+        <Options index={index} />
+      </form>
     </div>
-  )
+  );
 }
 
-export default QuestionType
+export default QuestionType;

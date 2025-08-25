@@ -1,3 +1,1 @@
-const commonSelector = (state) => state.common;
-
-export { commonSelector };
+export const commonSelector = (state) => state.common;

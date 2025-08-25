@@ -1,4 +1,6 @@
-export * from './addNewQuestionTypeAction';
-export * from './removeQuestionTypeAction';
-export * from './updateQuestionTypeDataAction';
-export * from './updateQuestionTypeOptionsAction';
+export * from "./addNewQuestionTypeAction";
+export * from "./removeQuestionTypeAction";
+
+// Update Question Type
+export * from "./updateQuestionTypeDataAction";
+export * from "./updateQuestionTypeOptionsAction";

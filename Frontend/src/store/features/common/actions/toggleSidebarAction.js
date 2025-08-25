@@ -1,3 +1,3 @@
-export const toggleSidebarAction = (state, action) => {
-    state.isSidebarOpen = action.payload ?? !state.isSidebarOpen;
-}
+export const toggleSidebarAction = (state, { payload }) => {
+  state.isSidebarOpen = payload ?? !state.isSidebarOpen;
+};

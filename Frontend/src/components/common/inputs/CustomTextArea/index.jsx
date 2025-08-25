@@ -1,26 +1,22 @@
-import React from 'react'
+import React from "react";
 
-export function CustomTextArea({
-    id, 
-    value, 
-    onChange, 
-    className,
-    label,
-    placeholder,
-    ...props
+function CustomTextArea({
+  id = "custom-input",
+  value,
+  onChange,
+  className = "",
+  ...props
 }) {
   return (
-    <>
-        <textarea 
-            id={id}
-            value={value}
-            onChange={onChange} 
-            type='text' 
-            placeholder={placeholder}
-            className={`${className} w-full border p-1 rounded-md `} 
-            {...props}
-        />
-    </>
-  )
+    <textarea
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      id={id}
+      className={`${className} w-full border p-1 rounded-md resize-none`}
+      rows={3}
+      {...props}
+    />
+  );
 }
 
+export default CustomTextArea;

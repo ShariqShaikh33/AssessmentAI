@@ -1,22 +1,14 @@
-import React from 'react'
-import Question from '.'
-import ChipComponent from '../ChipComponent'
-import { useSelector } from 'react-redux'
-import { assessmentsSelector } from '../../../store/features/assessment/selectors'
-import { questionOptions } from '../../../utlis/questionOptions'
+import React from "react";
+import Question from "./index.jsx";
+import ChipsComponent from "./components/ChipsComponent.jsx";
 
-function FullQuestionComponent({question, index}) {
-    const {questions = [] } = useSelector(assessmentsSelector);
+function FullQuestionComponent({ question, index }) {
   return (
-    <div className='border rounded-lg p-4 bg-white'>
-        <div className='flex gap-2 items-center my-2'>
-            <ChipComponent text={`Question ${index+1} of ${questions.length}`}/>
-            <ChipComponent text={`${questionOptions.find(q=>q.id===question.type).label}`}/>
-        </div>
-        <Question key={question._id} question={question}/>
-      
+    <div className="border rounded-lg p-4 bg-white">
+      <ChipsComponent question={question} index={index} />
+      <Question question={question} />
     </div>
-  )
+  );
 }
 
-export default FullQuestionComponent
+export default FullQuestionComponent;

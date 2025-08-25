@@ -1,2 +1,2 @@
-export * from "./stateToTemplate.js";
-export * from "./templateToState.js";
+export * from "./templateToState";
+export * from "./stateToTemplate";

@@ -1,5 +1,5 @@
-export const commonInitialState = {
+export const commomIntialState = {
   isSidebarOpen: true,
   heading: "",
-  subheading: ""
-}
+  subheading: "",
+};

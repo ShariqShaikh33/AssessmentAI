@@ -1,16 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { commonInitialState } from "./initialState";
+import { commomIntialState } from "./initialState";
 import * as Actions from "./actions";
+
 export * from "./selectors";
 
-const commonslice = createSlice({
+const commonSlice = createSlice({
   name: "teacher-common",
-  initialState:commonInitialState,
-  reducers:{
-    toggleSidebar : Actions.toggleSidebarAction,
+  initialState: commomIntialState,
+  reducers: {
+    toggleSidebar: Actions.toggleSidebarAction,
     setCommonKey: Actions.setCommonKeyAction,
   },
 });
 
-export const {toggleSidebar, setCommonKey} = commonslice.actions;
-export default commonslice.reducer;
+export const { toggleSidebar, setCommonKey } = commonSlice.actions;
+
+export default commonSlice.reducer;

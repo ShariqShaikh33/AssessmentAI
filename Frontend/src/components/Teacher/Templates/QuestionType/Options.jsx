@@ -1,43 +1,39 @@
-import React from 'react'
-import CustomInput from '../../../common/inputs/CustomInput'
-import { InputTypes } from '../../../common/inputs/CustomInput/utils'
-import { useDispatch, useSelector } from 'react-redux'
-import { templateSelector } from '../../../../store/features/template/selectors'
-import { updateQuestionTypeOptions } from '../../../../store/features/template/templateSlice'
-import { QuestionTypes } from '../../../../types'
-import { getQuestionTypeOptions } from './utils'
+import React from "react";
+import CustomInput from "../../../common/inputs/CustomInput";
+import { InputTypes } from "../../../common/inputs/CustomInput/types";
+import { useSelector } from "react-redux";
+import { templateSelector } from "../../../../store/features/template/selectors";
+import { updateQuestionTypeOptions } from "../../../../store/features/template/templateSlice";
+import { useDispatch } from "react-redux";
+import { getQuestionTypeOptions } from "./utils";
 
-function Options({index}) {
-  const dispatch = useDispatch()
-  const {questionTypes} = useSelector(templateSelector);
+function Options({ index }) {
+  const dispatch = useDispatch();
+  const { questionTypes } = useSelector(templateSelector);
   const questionType = questionTypes[index];
   const options = getQuestionTypeOptions(questionType.type);
-  if(!questionType) return null
 
-  const handleChange=(key,value)=>{
-    dispatch(updateQuestionTypeOptions({index, key, value}))
-  }
+  const handleChange = (key, value) => {
+    dispatch(updateQuestionTypeOptions({ index, key, value }));
+  };
 
-  
+  if (!questionType) return null;
 
   return (
     <div>
-      <h2 className='test-md font-semibold'>Options</h2>
-      {
-        options.map((option)=>{
-          return <CustomInput
-          inputType={InputTypes.CHECKBOX}
+      <h2 className="text-md font-semibold">Options</h2>
+
+      {options.map((option) => (
+        <CustomInput
           key={option.id}
-          id={option.id}
-          label={option.label}
-          check = {"flex flex-row-reverse gap-2 justify-end items-start"}
+          inputType={InputTypes.CHECKBOX}
           value={questionType.data.options[option.id]}
-          onChange={(e)=>{handleChange(option.id,e)}}
-          />
-        })
-      }
+          label={option.label}
+          onChange={(value) => handleChange(option.id, value)}
+        />
+      ))}
     </div>
-  )
+  );
 }
 
 export default Options;

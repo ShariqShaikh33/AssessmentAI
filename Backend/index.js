@@ -1,34 +1,43 @@
-import {config} from "dotenv";
-import express,{json} from "express";
-import {connect} from "mongoose";
-import { assessmentRouter, templateRouter } from "./routes/index.js";
+import { config } from "dotenv";
+import express, { json } from "express";
+import { connect } from "mongoose";
+import {
+  assessmentsRouter,
+  submissionsRouter,
+  templateRouter,
+} from "./routes/index.js";
 import { errorHandler } from "./utils/errorHandler.js";
 import cors from "cors";
-
+import cron from "node-cron";
+import { checkSubmissions } from "./cron/checkSubmissions.js";
 
 config();
+
 const app = express();
+
 app.use(json());
 app.use(cors());
 
+// MongoDB connection
 connect(process.env.MONGO_URI)
-.then(()=>{
-    console.log("Connected to the Database");
-})
-.catch((err)=>{
-    console.error("Cannot connect to the Database",err);
-});
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 app.use("/api/templates", templateRouter);
-app.use("/api/assessments", assessmentRouter);
+app.use("/api/assessments", assessmentsRouter);
+app.use("/api/submissions", submissionsRouter);
 
-app.use(errorHandler); 
+app.use(errorHandler);
 
-app.get("/",(req,res)=>{
-    res.send("Quizzy is UP");
-})
+// Example route
+app.get("/", (req, res) => {
+  res.json({ message: "Quizzy API is up." });
+});
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, ()=>{
-    console.log(`Connected to port ${PORT}`)
-})
+// CRON JOBs
+cron.schedule("* * * * *", checkSubmissions);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on port http://localhost:${PORT}`),
+);

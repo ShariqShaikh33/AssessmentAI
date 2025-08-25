@@ -1,4 +1,5 @@
 export const defaultQuestionConfig = {
-    showAnswer: true,
-    showExplanation: false
-}
+  showAnswer: true,
+  showExplanation: true,
+  letUserAnswer: false,
+};

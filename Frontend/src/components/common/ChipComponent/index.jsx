@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
+import { getChipStyling } from "./utils/index.js";
+import { ChipTypes } from "./types";
 
-function ChipComponent({text=""}) {
-    if(!text) return;
+function ChipComponent({ text = "", type = ChipTypes.PRIMARY }) {
+  if (!text) return;
 
-    return (
-        <div className='min-w-25 pl-2 pr-2 text-center rounded-2xl border text-xs bg-gray-100'>
-            {text}
-        </div>
-    )
+  return (
+    <div
+      className={` ${getChipStyling(type)} rounded-full px-2 border text-xs`}>
+      {text}
+    </div>
+  );
 }
 
-export default ChipComponent
+export default ChipComponent;

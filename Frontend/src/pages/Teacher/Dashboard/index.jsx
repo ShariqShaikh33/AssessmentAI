@@ -1,15 +1,12 @@
-import React from 'react'
-import { useHeading } from '../../../hooks';
+import React from "react";
+import { useHeading } from "../../../hooks";
 
 function TeacherDashboard() {
-  const {setHeading,setSubheading} = useHeading();
+  const { setHeading, setSubheading } = useHeading();
   setHeading("Dashboard");
-  setSubheading("View your assessments, templates, and more");
-  return (
-    <div>
-      Teacher Dashboard
-    </div>
-  )
+  setSubheading("This is the place where you can manage your assesments");
+
+  return <div>dashboard</div>;
 }
 
 export default TeacherDashboard;

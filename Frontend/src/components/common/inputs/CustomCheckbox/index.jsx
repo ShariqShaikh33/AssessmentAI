@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
 
-function CustomCheckbox({value, onChange}) {
+function CustomCheckbox({ id, value, onChange }) {
   return (
-    <div>
-      <input type="checkbox" checked={value} onClick={()=>onChange(!value)}/>
-    </div>
-  )
+    <input
+      id={id}
+      type="checkbox"
+      checked={value}
+      onChange={() => onChange(!value)}
+    />
+  );
 }
 
 export default CustomCheckbox;
