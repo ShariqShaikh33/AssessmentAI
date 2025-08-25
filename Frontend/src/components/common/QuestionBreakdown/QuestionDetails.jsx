@@ -26,10 +26,10 @@ function QuestionDetails({ question, answers }) {
           <p
             className={`${
               isCompleted
-                ? getAnswerStyling(answer.marksAwarded, question.marks)
+                ? getAnswerStyling(answer?.marksAwarded, question.marks)
                 : "bg-gray-200"
             } p-2 rounded-md`}>
-            {answer.response}
+            {answer?.response}
           </p>
         </div>
 
@@ -52,10 +52,10 @@ function QuestionDetails({ question, answers }) {
         </div>
       )}
 
-      {answer.feedback && isCompleted && (
+      {answer?.feedback && isCompleted && (
         <div>
           <h3 className="font-semibold text-base">Feedback:</h3>
-          <p>{answer.feedback}</p>
+          <p>{answer?.feedback}</p>
         </div>
       )}
     </div>
