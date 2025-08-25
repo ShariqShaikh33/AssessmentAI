@@ -3,7 +3,7 @@ import { useGetAllSubmissionsQuery } from "../../../../store/features/submission
 import {
   AssesmentStatusEnum,
   SubmissionStatusEnum,
-} from "../../../../../../backend/types";
+} from "../../../../../../backend/types/index.js";
 import { getRowIcon } from "../utils";
 
 export const useSubmissionsData = () => {
