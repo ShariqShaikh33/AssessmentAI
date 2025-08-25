@@ -2,7 +2,7 @@ import { EyeIcon, FilePenLine } from "lucide-react";
 import {
   AssesmentStatusEnum,
   SubmissionStatusEnum,
-} from "../../../../../../Backend/types";
+} from "../../../../../../backend/types";
 
 export const getRowIcon = (status) => {
   switch (status) {
