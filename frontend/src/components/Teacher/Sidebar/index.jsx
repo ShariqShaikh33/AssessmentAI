@@ -30,8 +30,8 @@ function TeacherSidebar() {
           <img
             src={
               isSidebarOpen
-                ? "/logo/quizzy_horizontal.png"
-                : "/logo/quizzy_logo.png"
+                ? "/logos/quizzy_horizontal.png"
+                : "/logos/quizzy_logo.png"
             }
             alt="Quizzy logo"
             className="max-w-full"
