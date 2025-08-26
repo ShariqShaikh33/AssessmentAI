@@ -2,7 +2,7 @@ import React from "react";
 import { InputTypes } from "./types";
 import CustomTextInput from "../CustomTextInput";
 import CustomTextArea from "../CustomTextArea";
-import CustomDropdownInput from "../CustomDropdownInput";
+import CustomDropdownInput from "../CustomDropDownInput";
 import CustomCheckbox from "../CustomCheckbox";
 
 function HandleInputRender({ inputType, ...props }) {
