@@ -11,7 +11,7 @@ export const createTemplate = async (req, res, next) => {
 
     template.questionsTemplates = questionTemplates;
 
-    const savedTemplate = await template.save();
+    const savedTemplate = await Template.save();
 
     return res.status(201).json({
       success: true,
@@ -28,6 +28,7 @@ export const createTemplate = async (req, res, next) => {
 export const getAllTemplates = async (req, res, next) => {
   try {
     const templates = await Template.find();
+    console.log(templates);
 
     return res.status(200).json({
       success: true,
