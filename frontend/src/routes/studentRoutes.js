@@ -1,7 +1,7 @@
 export const studentRoutes = [
   {
     path: "/student",
-    element: () => import("../pages/student"),
+    element: () => import("../pages/student/assesments"),
   },
   {
     path: "/student/dashboard",
