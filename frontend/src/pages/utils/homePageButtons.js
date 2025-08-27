@@ -1,10 +1,10 @@
 export const homePageButtons = [
   {
     label: "Enter as Student",
-    to: "/student",
+    to: "/student/assesments",
   },
   {
     label: "Enter as Teacher",
-    to: "/teacher",
+    to: "/teacher/templates",
   },
 ];
