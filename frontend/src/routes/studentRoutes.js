@@ -1,31 +1,23 @@
-// src/routes/studentRoutes.js
-import { lazy } from "react";
+export const studentRoutes = [ 
+  { 
+    path: "/student/assesments", 
+    element: () => import ("../pages/student/assesments")
+  }, 
+  { 
+    path: "/student/assesments/:id", 
+    element: () => import ("../pages/student/assesments/take") 
+  }, 
+  { 
+    path: "/student/submissions", 
+    element: () => import ("../pages/student/submissions") 
+  }, 
+  { 
+    path: "/student/submissions/:id", 
+    element: () => import("../pages/student/submissions/submission"), 
 
-const StudentAssesments = lazy(() => import("../pages/student/assesments"));
-const TakeAssesment = lazy(() => import("../pages/student/assesments/take"));
-const Submissions = lazy(() => import("../pages/student/submissions"));
-const Submission = lazy(() => import("../pages/student/submissions/submission"));
-const NotFound = lazy(() => import("../pages/404"));
-
-export const studentRoutes = [
-  {
-    path: "/student/assesments",
-    element: <StudentAssesments />,
-  },
-  {
-    path: "/student/assesments/:id",
-    element: <TakeAssesment />,
-  },
-  {
-    path: "/student/submissions",
-    element: <Submissions />,
-  },
-  {
-    path: "/student/submissions/:id",
-    element: <Submission />,
-  },
-  {
-    path: "/student/*",
-    element: <NotFound />,
-  },
+  }, 
+  { 
+    path: "/student/*", 
+    element: () => import("../pages/404") 
+  }, 
 ];
