@@ -1,11 +1,11 @@
 import React from "react";
 import { useHeading } from "../../../hooks";
-import CustomTable from "../../../components/common/CustomTable";
 import { templateColumns } from "./utils";
 import { useTemplatesData } from "./hooks";
 import CustomButton from "../../../components/common/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "lucide-react";
+import CustomTable from "../../../components/common/CustomTable";
 
 function TeacherTemplatesPage() {
   const navigate = useNavigate();

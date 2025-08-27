@@ -10,6 +10,7 @@ import {
 export const useTemplatesData = () => {
   const navigate = useNavigate();
   const { data = [] } = useGetAllTemplatesQuery();
+  console.log(data);
   const [triggerDelete] = useDeleteTemplateMutation();
 
   const rows = data.map((template) => ({
