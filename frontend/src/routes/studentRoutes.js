@@ -1,27 +1,27 @@
 export const studentRoutes = [
   {
     path: "/student",
-    element: () => import("../pages/Student"),
+    element: () => import("../pages/student"),
   },
-  // {
-  //   path: "/student/dashboard",
-  //   element: () => import("../pages/student/dashboard"),
-  // },
+  {
+    path: "/student/dashboard",
+    element: () => import("../pages/student/dashboard"),
+  },
   {
     path: "/student/assesments",
-    element: () => import("../pages/Student/assesments"),
+    element: () => import("../pages/student/assesments"),
   },
   {
     path: "/student/assesments/:id",
-    element: () => import("../pages/Student/assesments/take"),
+    element: () => import("../pages/student/assesments/take"),
   },
   {
     path: "/student/submissions",
-    element: () => import("../pages/Student/submissions"),
+    element: () => import("../pages/student/submissions"),
   },
   {
     path: "/student/submissions/:id",
-    element: () => import("../pages/Student/submissions/submission"),
+    element: () => import("../pages/student/submissions/submission"),
   },
   {
     path: "/student/*",

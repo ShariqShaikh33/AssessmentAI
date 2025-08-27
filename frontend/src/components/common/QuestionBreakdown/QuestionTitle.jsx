@@ -11,6 +11,7 @@ function QuestionTitle({ question, index, answers, toggle, isVisible }) {
     skip: !id,
   });
   const answer = answers.find((answer) => answer.questionId === question._id);
+
   return (
     <div
       onClick={toggle}
@@ -22,10 +23,10 @@ function QuestionTitle({ question, index, answers, toggle, isVisible }) {
       {data.status === SubmissionTypes.COMPLETED && (
         <div
           className={`${getMarksStyling(
-            answer?.marksAwarded,
+            answer.marksAwarded,
             question.marks,
           )} text-sm bg-gray-100 p-2 rounded-md w-fit shrink-0 font-semibold`}>
-          {answer?.marksAwarded} / {question.marks}
+          {answer.marksAwarded} / {question.marks}
         </div>
       )}
 
