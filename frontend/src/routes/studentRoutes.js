@@ -1,7 +1,7 @@
 export const studentRoutes = [
   {
     path: "/student/assesments",
-    element: () => import("../pages/student/assesments/index.jsx"),
+    element: lazy(() => import("../pages/student/assesments")),
   },
   {
     path: "/student/assesments/:id",
