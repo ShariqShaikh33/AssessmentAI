@@ -11,7 +11,7 @@ export const createTemplate = async (req, res, next) => {
 
     template.questionsTemplates = questionTemplates;
 
-    const savedTemplate = await Template.save();
+    const savedTemplate = await template.save();
 
     return res.status(201).json({
       success: true,
@@ -21,6 +21,7 @@ export const createTemplate = async (req, res, next) => {
     const error = new Error("Failed to create template", {
       cause: e,
     });
+    console.log(e);
     return next(error);
   }
 };
