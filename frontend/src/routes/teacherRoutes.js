@@ -1,10 +1,6 @@
 export const teacherRoutes = [
   //   Templates Pages
   {
-    path: "/teacher/templates",
-    element: () => import("../pages/teacher/templates"),
-  },
-  {
     path: "/teacher/templates/create",
     element: () => import("../pages/teacher/templates/create"),
   },

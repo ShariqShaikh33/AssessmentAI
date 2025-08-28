@@ -16,7 +16,13 @@ config();
 const app = express();
 
 app.use(json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://assessment-ai-tau.vercel.app"], // your Vercel frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // MongoDB connection
 connect(process.env.MONGO_URI)
