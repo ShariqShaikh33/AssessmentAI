@@ -1,19 +1,19 @@
 export const studentRoutes = [ 
   { 
     path: "/student/assesments", 
-    element: () => import ("../pages/student/assesments/index.jsx")
+    element: () => import ("../pages/Student/assesments/index.jsx")
   }, 
   { 
     path: "/student/assesments/:id", 
-    element: () => import ("../pages/student/assesments/take") 
+    element: () => import ("../pages/Student/assesments/take") 
   }, 
   { 
     path: "/student/submissions", 
-    element: () => import ("../pages/student/submissions") 
+    element: () => import ("../pages/Student/submissions") 
   }, 
   { 
     path: "/student/submissions/:id", 
-    element: () => import("../pages/student/submissions/submission"), 
+    element: () => import("../pages/Student/submissions/submission"), 
 
   }, 
   { 
