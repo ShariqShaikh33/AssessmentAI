@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/common/Loading";
 import NotFoundPage from "./pages/404";
 import { studentRoutes, teacherRoutes } from "./routes";
-import TeacherTemplatesPage from "./pages/teacher/templates";
+import {TeacherTemplatesPage} from "./pages/teacher/templates";
 
 const Home = lazy(() => import("./pages/index"));
 
