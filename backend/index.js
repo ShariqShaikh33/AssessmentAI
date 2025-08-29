@@ -18,7 +18,10 @@ const app = express();
 app.use(json());
 app.use(
   cors({
-    origin: ["https://assessment-iph01z7ba-shariq-shaikhs-projects-35631092.vercel.app",], // your Vercel frontend URL
+    origin: [
+      "https://assessment-iph01z7ba-shariq-shaikhs-projects-35631092.vercel.app",
+      "https://assessment-ai-tau.vercel.app/"
+    ], // your Vercel frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

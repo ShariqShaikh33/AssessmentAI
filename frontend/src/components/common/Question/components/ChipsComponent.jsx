@@ -7,7 +7,7 @@ import { questionOptions } from "../../../../utils/questionOptions";
 
 function ChipsComponent({ question, index }) {
   const { questions = [] } = useSelector(assesmentsSelector);
-
+  console.log(question)
   return (
     <div className="flex items-center gap-2 my-2">
       <ChipComponent
