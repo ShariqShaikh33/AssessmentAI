@@ -8,7 +8,7 @@ import ChipsComponent from "../../../common/Question/components/ChipsComponent";
 
 function AssesmentQuestion() {
   const { questions, currentQuestionIndex } = useSelector(assesmentsSelector);
-
+  
   return (
     <main className="flex-1 h-full p-2 pl-0 overflow-auto">
       <ChipsComponent
