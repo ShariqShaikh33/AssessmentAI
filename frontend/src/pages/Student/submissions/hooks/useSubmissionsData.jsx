@@ -13,10 +13,11 @@ export const useSubmissionsData = () => {
     refetchOnFocus: true,
   });
 
-  const rows = data.map((submission) => ({
-    ...submission,
-    assessment: submission.assesmentId?.title,
-    score:
+  const rows = data.map((submission) => (
+    {
+      ...submission,
+      assessment: submission.assesmentId?.title,
+      score:
       submission.status === AssesmentStatusEnum.COMPLETED ? (
         <p>
           {submission.totalMarks} / {submission.maxMarks}
@@ -24,7 +25,8 @@ export const useSubmissionsData = () => {
       ) : (
         "-"
       ),
-  }));
+    }
+  ));
 
   const actions = [
     {

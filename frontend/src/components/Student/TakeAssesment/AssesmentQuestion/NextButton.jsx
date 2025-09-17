@@ -22,12 +22,14 @@ function NextButton() {
   const [triggerSubmitAssesment, { isLoading }] = useSubmitAssesmentMutation();
 
   const handleNext = async () => {
+    console.log(questions);
     if (isLoading) return;
 
     if (!submissionId) {
       console.error("Submission ID not found");
       return;
     }
+    console.log(currentQuestionIndex);
 
     if (isLastQuestion) {
       try {
