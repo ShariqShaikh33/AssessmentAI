@@ -13,7 +13,7 @@ export const useSubmissionsData = () => {
     refetchOnFocus: true,
   });
 
-  const rows = data.map((submission) => (
+  const rows = data?.map((submission) => (
     {
       ...submission,
       assessment: submission.assesmentId?.title,

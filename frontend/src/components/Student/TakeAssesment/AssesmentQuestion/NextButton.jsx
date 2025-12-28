@@ -29,8 +29,7 @@ function NextButton() {
       console.error("Submission ID not found");
       return;
     }
-    console.log(currentQuestionIndex);
-
+    
     if (isLastQuestion) {
       try {
         await triggerSubmitAssesment({
@@ -48,7 +47,8 @@ function NextButton() {
       }
       return;
     }
-
+    
+    console.log(currentQuestionIndex);
     dispatch(
       setAssesmentKey({
         key: "currentQuestionIndex",

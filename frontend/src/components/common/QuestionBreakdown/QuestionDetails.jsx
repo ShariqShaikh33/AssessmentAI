@@ -12,7 +12,6 @@ function QuestionDetails({ question, answers }) {
   const isCompleted = data?.status === SubmissionTypes.COMPLETED;
 
   const answer = answers.find((answer) => answer.questionId === question._id);
-
   return (
     <div className="bg-gray-50 p-2 rounded-md flex flex-col gap-2 border border-t-0">
       <div>
